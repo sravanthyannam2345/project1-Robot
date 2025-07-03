@@ -5,7 +5,7 @@ Open Browser To Login Page
     Call Method    ${options}    add_argument    --disable-dev-shm-usage
     Call Method    ${options}    add_argument    --disable-gpu
     Call Method    ${options}    add_argument    --headless  # Optional: run in headless mode
-    Create WebDriver    Chrome    chrome_options=${options}
+    Create WebDriver    Chrome    options=${options}
     Go To    ${URL}
     Maximize Browser Window
 
