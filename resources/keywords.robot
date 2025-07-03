@@ -1,6 +1,12 @@
 *** Keywords ***
 Open Browser To Login Page
-    Open Browser    ${URL}    ${BROWSER}
+    ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+    Call Method    ${options}    add_argument    --no-sandbox
+    Call Method    ${options}    add_argument    --disable-dev-shm-usage
+    Call Method    ${options}    add_argument    --disable-gpu
+    Call Method    ${options}    add_argument    --headless  # Optional: run in headless mode
+    Create WebDriver    Chrome    chrome_options=${options}
+    Go To    ${URL}
     Maximize Browser Window
 
 Input Username
